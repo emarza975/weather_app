@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>My Weather Page - from Open Weather Map</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+        <!--<link rel="stylesheet" href="{{ url_for('static',filename='css/weather.css') }}"> -->
+
+    </head>
+    <body>
+        <section class="section">
+        <div class="container">
+            <p class="title is-1 is-spaced">Previsioni prossimi 7 giorni</p>
+            <p><small>fonte: <a href="http://openweathermap.org">Open Weather Map</a></small></p>
+            <p class="title is-1 is-spaced">{{weather.city}}</p>
+            <p > <small>(lat. {{ weather.lat }} lon. {{ weather.lon }})</small></p>
+        </div>
+    </section>
+    <section class="section">
+
+        <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                    <th>    Data </td>
+                    <th>    Previsione </td>
+                    <th>    Alba </td>
+                    <th>    Tramonto </td>
+                    <th>    Temp. Min. </td>
+                    <th>    Temp. Max</td>
+                    <th>    Pressione</td>
+                    <th>    Nuvoloso </td>
+                    <th>    Vento Vel. </td>
+                </tr>
+            </thead>
+
+                {% for i in range(8) %}
+                <tr>
+
+                <td>{{ weather.forecast[i]['date'] }} </td>
+                    <td><img src="http://openweathermap.org/img/w/{{ weather.forecast[i]['icon'] }}.png" alt="{{ weather.forecast[i]['description'] }}"><small>{{ weather.forecast[i]['description'] }}</small> </td>
+                <td>{{ weather.forecast[i]['sunrise'] }} </td>
+                <td>{{ weather.forecast[i]['sunset'] }} </td>
+                <td>{{ weather.forecast[i]['temp_min'] }} °C </td>
+                <td>{{ weather.forecast[i]['temp_max'] }} °C</td>
+                <td>{{ weather.forecast[i]['pressure'] }} mbar</td>
+                <td>{{ weather.forecast[i]['clouds'] }} %</td>
+                <td>{{ weather.forecast[i]['wind_speed'] }} km/h</td>
+
+            </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+    <footer class="footer">
+      <div class="content has-text-centered">
+            <a href="{{ url_for('index')}}">
+            <button class="button is-success"><span>Ritorna</span></button>
+            </a>
+        </div>
+    </footer>
+    </body>
+</html>

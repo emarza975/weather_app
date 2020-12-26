@@ -1,0 +1,43 @@
+body{
+    width: 750px;
+    margin: 15px
+    padding; 15px
+    font-family: Arial;
+    text-align: center;
+
+}
+
+.position {
+    background-color: darkgoldenrod;
+    border: solid 4px lightgray;
+    text-align: center;
+    font-size: 30px;
+    color: whitesmoke ;
+
+
+}
+
+
+a:hover{
+    color: black ;
+}
+
+h1{
+    color:rgb(0, 21, 255);
+    margin:30px;
+
+}
+
+table {
+    border: dotted  2px;
+    background-color: rgb(215, 200, 200);
+    border-color: black;
+    border-inline-start: solid 3px white;
+    text-align: center;
+    margin: 10px;
+
+}
+
+td {
+    border:dotted 1px white;
+}

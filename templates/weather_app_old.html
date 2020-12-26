@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The weather App</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/weather2.css') }}"> -->
+    </head>
+    <body>
+<div class="column is-three-fifths is-offset-one-fifth">
+            <div class="column is-three-fifths is-offset-one-fifth field is-grouped">
+              <form method="POST">
+                <div class="control">
+                  <input class="input" name = "city_name" type="text" placeholder="Città da inserire">
+                  <button class="button is-info">Aggiungi</button>
+                </div>
+              </form>
+              {% if err_msg %}
+              <div class="notification is-danger">
+                    {{err_msg}}
+              </div>
+              {% endif %}
+        </div>
+        {% for i in data %}
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://openweathermap.org/img/w/{{ i['icon'] }}.png" alt="{{ i['description'] }}">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                  <nav>
+                      <a href="{{ url_for('seven_days',
+                                  city = i['city'],
+                                  lat = i['lat'],
+                                  lon = i['lon'])}}">
+                      <button class="button is-link"><span>7 giorni</span></button>
+                      </a>
+                      <a href="{{ url_for('delete_city', city = i['city'])}}">
+                      <button class="button is-danger"><span>Elimina</span></button>
+                      </a>
+                </nav>
+                <p>
+                  <strong>{{ i['city'] }}</strong> <small>lon. {{i['lon']}} lat. {{i['lat']}}</small>
+                  <br>
+                  {{i['description']}}<br>
+                  <small>Temperature: Min {{i['temp_min']}} °C - Max {{i['temp_max']}} °C <br>
+                  Pressione {{i['pressure']}} mbar - Unidità {{i['humidity']}}%
+                  <br>Vel. vento {{i['wind_speed']}} km/h
+                </small></p>
+              </div>
+            </div>
+          </article>
+        </div>
+        {% endfor %}
+</div>
+    </body>
+</html>
