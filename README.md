@@ -14,8 +14,8 @@ Used modules:
 - datetime
 
 ---------------
-In this very simple web-app, I access data from Open Weather Map API [![(htts://openweathermap.org)](htts://openweathermap.org)] and I can insert or delete cities from everwhere in the world.
+In this very simple web-app, I access data from Open Weather Map API [(htts://openweathermap.org)](htts://openweathermap.org) and I can insert or delete cities from everwhere in the world.
 For each city I can see a 7 days forecast (in a separate page).
 
 --------------
-v. 1.0 (2020-12-26): completed engine - There's a minimal graphic interface. No CSS, I used [![Bulma]] (https://bulma.io)]
+v. 1.0 (2020-12-26): completed engine - There's a minimal graphic interface. No CSS, I used [Bulma] (https://bulma.io)
