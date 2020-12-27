@@ -68,6 +68,7 @@ def index():
         if status_r == 200:
             data_city = {
                 'city':city,
+                'country':r['sys']['country'],
                 'lon':r['coord']['lon'],
                 'lat':r['coord']['lat'],
                 'description':r['weather'][0]['description'].upper(),

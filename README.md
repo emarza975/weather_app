@@ -24,10 +24,11 @@ For each city I can see a 7 days forecast (in a separate page).
 - weather.db  : Sqlite3 Database with table cities
 - weather_app.html : main homepage
 - weather.html : 7 days forecast page
+- base.html : base template
 
 
 
 ***
 #### _**LIST VERSIONS**_
-
-v. 1.0 (2020-12-26): completed engine - There's a minimal graphic interface. No CSS, I used [Bulma](https://bulma.io)
+- v. 2.0 (2020-12-27): Updating CSS using [Bootstrap](https://getbootstrap.com/), using base template
+-v. 1.0 (2020-12-24): completed engine - There's a minimal graphic interface. No CSS, I used [Bulma](https://bulma.io)

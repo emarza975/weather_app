@@ -1,66 +1,54 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>The weather App</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-        <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/weather2.css') }}"> -->
-    </head>
-    <body class="column is-3">
-        <section>
-        <div>
-            <form method="POST">
-                <div class="column field is-grouped">
-                    <div class="control">
-                    <input class="input" name = "city_name" type="text" placeholder="Città da inserire">
-                    <button class="button is-info">Aggiungi</button>
-            </form>
-          </div>
-              {% if err_msg %}
-              <div class="notification is-danger">
-                    {{err_msg}}
-              </div>
-              {% endif %}
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+<div class="py-4 mx-auto" style="width: 400px;">
+    <form method="POST">
+        <div  class="input-group mb-3">
+            <input class="form-control" name = "city_name" type="text" placeholder="Città da inserire">
+            <button class="btn btn-primary">Aggiungi</button>
         </div>
-    </section>
-    <section>
-        {% for i in data %}
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                    <strong>{{ i['city'] }} </strong>
-                      <figure class="image is-64x64">
-                        <img src="http://openweathermap.org/img/w/{{ i['icon'] }}.png" alt="{{ i['description'] }}">
-                      </figure>
-                      {{i['description']}}
-                </p>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                    <p>
-                     <small>lon. {{i['lon']}} lat. {{i['lat']}}</small>
-                      <br>
 
-                      <small>Temperature: Min {{i['temp_min']}} °C - Max {{i['temp_max']}} °C <br>
-                      Pressione {{i['pressure']}} mbar - Unidità {{i['humidity']}}%
-                      <br>Vel. vento {{i['wind_speed']}} km/h
-                    </small></p>
-
-                </div>
-              </div>
-              <footer class="card-footer">
-                <a href="{{ url_for('seven_days',
-                            city = i['city'],
-                            lat = i['lat'],
-                            lon = i['lon'])}}" class="card-footer-item">7 Giorni</a>
-
-                <a href="{{ url_for('delete_city', city = i['city'])}}" class="card-footer-item">Elimina</a>
-              </footer>
-            </div>
-        {% endfor %}
+    </form>
+      {% if err_msg %}
+      <div class="alert alert-danger" role="alert">
+            {{err_msg}}
+      </div>
+      {% endif %}
 </div>
-</section>
 
-    </body>
-</html>
+<div class="row">
+{% for i in data %}
+    <div class="col-sm-2">
+        <div class="card" style="width: 18rem;">
+            <img src="http://openweathermap.org/img/w/{{ i['icon'] }}.png" class="card-img-top" alt="{{ i['description'] }}">
+
+
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{ i['city'] }} </strong>
+                    <span><small>{{ i['country'] }}</small></span>
+                </h5>
+            <p class="card-text"><small>lon. {{i['lon']}} lat. {{i['lat']}}</small>
+             <br>
+
+             <small>Temp.: Min {{i['temp_min']}} °C - Max {{i['temp_max']}} °C <br>
+             Pressione {{i['pressure']}} mbar - Unidità {{i['humidity']}}%
+             <br>Vel. vento {{i['wind_speed']}} km/h
+            </small></p>
+
+            <a href="{{ url_for('seven_days',
+               city = i['city'],
+               lat = i['lat'],
+               lon = i['lon'])}}" class="btn btn-primary">7 Giorni</a>
+
+            <a href="{{ url_for('delete_city', city = i['city'])}}" class="btn btn-danger">Elimina</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+
+{% endblock footer %}
