@@ -14,7 +14,7 @@ Used modules:
 - datetime
 
 ***
-In this very simple web-app, I access data from Open Weather Map API [(htts://openweathermap.org)](htts://openweathermap.org) and I can insert or delete cities from everywhere in the world.
+In this very simple web-app, I access data from [Open Weather Map API](htts://openweathermap.org) and I can insert or delete cities from everywhere in the world.
 For each city I can see a 7 days forecast (in a separate page).
 
 ***
