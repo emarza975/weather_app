@@ -31,4 +31,4 @@ For each city I can see a 7 days forecast (in a separate page).
 ***
 #### _**LIST VERSIONS**_
 - v. 2.0 (2020-12-27): Updating CSS using [Bootstrap](https://getbootstrap.com/), using base template
--v. 1.0 (2020-12-24): completed engine - There's a minimal graphic interface. No CSS, I used [Bulma](https://bulma.io)
+- v. 1.0 (2020-12-24): completed engine - There's a minimal graphic interface. No CSS, I used [Bulma](https://bulma.io)
